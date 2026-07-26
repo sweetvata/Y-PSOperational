@@ -5,7 +5,15 @@ $outDir = Join-Path ([Environment]::GetFolderPath('Desktop')) 'papa'
 New-Item -ItemType Directory -Force -Path $outDir | Out-Null
 $outFile = Join-Path $outDir 'PWSHOperational.txt'
 
+try { chcp 65001 | Out-Null; [Console]::OutputEncoding = [Text.UTF8Encoding]::new($false) } catch {}
+
 function _s([int[]]$c) { -join ($c | ForEach-Object { [char]$_ }) }
+
+function Write-Utf8Line {
+  param([byte[]]$Utf8Bytes, [ConsoleColor]$Color = 'Gray')
+  $t = [Text.Encoding]::UTF8.GetString($Utf8Bytes)
+  Write-Host $t -ForegroundColor $Color
+}
 
 # Defender module autogen vs real tamper (short user call — keep)
 function Test-IsDefenderModuleNoise {
@@ -189,7 +197,7 @@ $all = foreach ($r in $rules) { $r.P }
 $rx = ($all | Select-Object -Unique) -join '|'
 
 # console text via char-codes so file encoding cannot break it
-Write-Host (_s 1087,1080,1088,1089,1080,1090,32,1087,1080,1084,1103,1090,1100,46,46,46) -ForegroundColor Cyan
+Write-Utf8Line -Utf8Bytes ([byte[]](0xD0,0xBF,0xD0,0xB0,0xD1,0x80,0xD1,0x81,0xD0,0xB8,0xD1,0x82,0x20,0xD0,0xBF,0xD0,0xB0,0xD0,0xBC,0xD1,0x8F,0xD1,0x82,0xD1,0x8C,0x2E,0x2E,0x2E)) -Color Cyan
 Write-Host 'love bypass by BypassMagister' -ForegroundColor Magenta
 
 $daysBack = 30
