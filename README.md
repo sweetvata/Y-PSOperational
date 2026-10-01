@@ -24,8 +24,8 @@ love bypass by BypassMagister
 
 | Метка | Смысл |
 |--------|--------|
-| **CRITICAL-LOADER** | AMSI/ETW/SBL + load/download в память — жёсткий evasion + payload |
-| **FILELESS-STAGER** | bxor + gzip + `ScriptBlock::Create` — обёртка; payload может быть **следующим** 4104 в ту же минуту |
+| **CRITICAL-LOADER** | AMSI/ETW/SBL + load/download в память - жёсткий evasion + payload |
+| **FILELESS-STAGER** | bxor + gzip + `ScriptBlock::Create` - обёртка; payload может быть **следующим** 4104 в ту же минуту |
 | **CHEAT-CLICKER** | Явный download + reflect (по сигнатурам вроде clicker) |
 | **REVIEW-HIGH / REVIEW** | Подозрительные IOC, руками глянуть full block |
 | **LOW** | Слабый match |
